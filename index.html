@@ -6,35 +6,45 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:">
   <title>Dino Bubbles</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lives.css">
 </head>
 <body>
   <main id="app">
     <section id="home" class="screen open hero">
       <div class="hero-shade"></div>
       <div class="hero-content">
-        <p class="eyebrow">DINO BUBBLES</p>
+        <div class="logo-orb">🫧<span>🦕</span></div><p class="eyebrow">DINO BUBBLES</p>
         <h1 id="title">Aventura das Bolhas</h1>
         <p id="tagline">Aponta, combina cores e faz as bolhas explodir!</p>
+        <div class="home-progress"><div><small>AVENTURA</small><b id="homeLevel">Nível 1</b></div><div><small>VIDAS</small><b id="homeLives">❤️ 5</b></div><span><i id="homeProgress"></i></span></div>
         <button id="play" class="primary">JOGAR</button>
         <button id="levelsButton" class="secondary">ESCOLHER NÍVEL</button>
+        <button id="challengesButton" class="challenge-button">🎯 DESAFIOS PARA GANHAR VIDAS</button>
       </div>
     </section>
     <section id="levels" class="screen panel-screen">
-      <div class="panel"><button id="closeLevels" class="close">×</button><p class="eyebrow">DINO BUBBLES</p><h2 id="levelsTitle">Escolhe um nível</h2><div id="levelGrid" class="level-grid"></div></div>
+      <div class="panel level-panel"><button id="closeLevels" class="close">×</button><p class="eyebrow">MAPA DA AVENTURA</p><h2 id="levelsTitle">Escolhe um nível</h2><div class="world-tabs" id="worldTabs"></div><div id="levelGrid" class="level-grid"></div></div>
     </section>
     <section id="game" class="game-screen">
       <header class="hud">
         <button id="back" class="icon">‹</button>
         <div><small id="levelWord">NÍVEL</small><b id="levelNumber">1</b></div>
         <div><small id="scoreWord">PONTOS</small><b id="score">0</b></div>
-        <div><small id="shotsWord">ATÉ DESCER</small><b id="misses">6</b></div>
+        <div><small id="shotsWord">ATÉ DESCER</small><b id="misses">6</b></div><div class="lives"><small>VIDAS</small><b id="lives">❤️ 5</b></div><div class="objective"><small>MISSÃO</small><b id="objective">LIMPA TUDO</b></div>
         <button id="restart" class="icon">↻</button><button id="sound" class="icon">🔊</button>
       </header>
       <div class="canvas-wrap"><canvas id="board" width="840" height="1180" aria-label="Jogo das bolhas"></canvas></div>
+      <div class="power-bar"><button id="swapPower"><span>🔄</span><small>TROCAR</small></button><button id="rainbowPower"><span>🌈</span><small id="rainbowCount">2</small></button><div class="combo"><small>COMBO</small><b id="combo">×1</b><i><span id="comboFill"></span></i></div></div>
       <div id="toast" class="toast"></div>
     </section>
+    <section id="challenges" class="screen panel-screen">
+      <div class="panel challenges-panel"><button id="closeChallenges" class="close">×</button><div class="challenge-mascot">🦕🎯</div><p class="eyebrow">DESAFIOS EXTRA</p><h2 id="challengesTitle">Ganha vidas a jogar!</h2><p id="challengesIntro">Completa desafios simples. Nunca precisas de comprar vidas.</p><div id="challengeList" class="challenge-list"></div></div>
+    </section>
+    <section id="minigame" class="screen minigame-screen">
+      <div class="mini-sky"><i></i><i></i><i></i></div><header class="mini-header"><button id="closeMinigame" class="icon">‹</button><div><small>DESAFIO</small><b id="miniTitle">Caça às cores</b></div><div><small>TEMPO</small><b id="miniTime">30</b></div><div><small>PROGRESSO</small><b id="miniScore">0/10</b></div></header><div id="miniArena" class="mini-arena"></div><div id="miniMessage" class="mini-message"></div>
+    </section>
     <section id="result" class="screen panel-screen">
-      <div class="panel result"><div class="mascot">🦕✨</div><p id="resultEyebrow" class="eyebrow">NÍVEL CONCLUÍDO</p><h2 id="resultTitle">Fantástico!</h2><div id="stars" class="stars">★★★</div><p><span id="finalScoreLabel">Pontuação</span> <b id="finalScore">0</b></p><button id="next" class="primary">PRÓXIMO NÍVEL</button><button id="retry" class="secondary">JOGAR NOVAMENTE</button><button id="resultLevels" class="text-button">ESCOLHER NÍVEL</button></div>
+      <div class="panel result"><div class="result-rays"></div><div class="mascot">🦕✨</div><p id="resultEyebrow" class="eyebrow">NÍVEL CONCLUÍDO</p><h2 id="resultTitle">Fantástico!</h2><div id="stars" class="stars">★★★</div><div class="result-lives" id="resultLives">❤️❤️❤️❤️❤️</div><p id="lifeMessage" class="life-message"></p><div class="score-card"><small id="finalScoreLabel">PONTUAÇÃO</small><b id="finalScore">0</b><span id="bestBadge">NOVO RECORDE!</span></div><button id="next" class="primary">PRÓXIMO NÍVEL</button><button id="retry" class="secondary">JOGAR NOVAMENTE</button><button id="resultChallenges" class="challenge-button">🎯 GANHAR VIDAS</button><button id="resultLevels" class="text-button">ESCOLHER NÍVEL</button></div>
     </section>
   </main>
   <script src="sdk/dinoplay-game-sdk.js"></script><script src="game.js"></script>

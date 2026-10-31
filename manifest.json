@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "id": "dinobubbles",
   "name": "Dino Bubbles",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "entry": "index.html",
   "category": "puzzle",
   "age": "5+",
   "cover": "cover.png",
-  "description": "Aponta, combina três bolhas da mesma cor e explora 30 desafios mágicos.",
+  "description": "Uma aventura 2.5D com 120 níveis, poderes, objetos especiais e mundos mágicos.",
   "offline": true,
   "multiplayer": false,
   "permissions": [
@@ -25,7 +25,11 @@
   "assets": [
     "index.html",
     "style.css",
+    "lives.css",
     "game.js",
+    "world-crystal-valley.png",
+    "dino-operator.png",
+    "bubble-cannon.png",
     "cover.png",
     "sdk/dinoplay-game-sdk.js"
   ],
